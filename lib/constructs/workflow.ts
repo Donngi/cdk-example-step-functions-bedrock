@@ -36,6 +36,7 @@ Assistant:', $.content)`,
 
     const stateMachine = new sfn.StateMachine(this, "Workflow", {
       definition: bedrockTask,
+      stateMachineType: sfn.StateMachineType.EXPRESS,
     });
     this.stateMachine = stateMachine;
   }
