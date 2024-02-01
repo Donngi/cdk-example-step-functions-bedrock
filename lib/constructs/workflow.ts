@@ -21,8 +21,7 @@ export class WorkFlow extends Construct {
 Human: 以下の文章から、要約を作成してください。
 # 条件
 - 要約は最大300文字程度としてください。
-- 「はい」「要約すると」などの返信は不要です。作成した
-要約文のみを返却してください
+- 「はい」「要約すると」などの返信は不要です。作成した要約文のみを返却してください
 
 # 要約対象の文章
 {}
@@ -30,6 +29,7 @@ Human: 以下の文章から、要約を作成してください。
 Assistant:', $.content)`,
         max_tokens_to_sample: 4000,
       }),
+      outputPath: "$.Body.completion",
     });
 
     const stateMachine = new sfn.StateMachine(this, "Workflow", {
