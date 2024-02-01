@@ -6,6 +6,8 @@ import * as bedrock from "aws-cdk-lib/aws-bedrock";
 type WorkFlowProps = {};
 
 export class WorkFlow extends Construct {
+  readonly stateMachine: sfn.StateMachine;
+
   constructor(scope: Construct, id: string, props?: WorkFlowProps) {
     super(scope, id);
 
@@ -35,5 +37,6 @@ Assistant:', $.content)`,
     const stateMachine = new sfn.StateMachine(this, "Workflow", {
       definition: bedrockTask,
     });
+    this.stateMachine = stateMachine;
   }
 }
