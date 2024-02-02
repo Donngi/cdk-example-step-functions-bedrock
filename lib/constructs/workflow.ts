@@ -17,6 +17,12 @@ export class WorkFlow extends Construct {
         "Model",
         bedrock.FoundationModelIdentifier.ANTHROPIC_CLAUDE_V2_1
       ),
+      // API Gatewayに
+      //  { "content": "要約対象の文章" }
+      // の形式でリクエストを送ると、
+      // step functionsには
+      //  { "body": { "content": "要約対象の文章" } }
+      // という形式でリクエストが渡される
       body: sfn.TaskInput.fromObject({
         "prompt.$": `States.Format('
 
@@ -28,7 +34,7 @@ Human: 以下の文章から、要約を作成してください。
 # 要約対象の文章
 {}
 
-Assistant:', $.content)`,
+Assistant:', $.body.content)`,
         max_tokens_to_sample: 4000,
       }),
       outputPath: "$.Body.completion",
