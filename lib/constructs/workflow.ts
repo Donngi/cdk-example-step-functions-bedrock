@@ -49,7 +49,7 @@ Assistant:', $.body.content)`,
           logGroupName: "stateMachineLogGroup",
           retention: aws_logs.RetentionDays.FIVE_DAYS,
         }),
-        level: sfn.LogLevel.ALL,
+        level: sfn.LogLevel.ERROR,
       },
     });
     this.stateMachine = stateMachine;
