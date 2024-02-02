@@ -2,6 +2,7 @@ import { Construct } from "constructs";
 import * as sfn from "aws-cdk-lib/aws-stepfunctions";
 import * as sfn_task from "aws-cdk-lib/aws-stepfunctions-tasks";
 import * as bedrock from "aws-cdk-lib/aws-bedrock";
+import * as aws_logs from "aws-cdk-lib/aws-logs";
 
 type WorkFlowProps = {};
 
@@ -43,6 +44,13 @@ Assistant:', $.body.content)`,
     const stateMachine = new sfn.StateMachine(this, "Workflow", {
       definitionBody: sfn.DefinitionBody.fromChainable(bedrockTask),
       stateMachineType: sfn.StateMachineType.EXPRESS,
+      logs: {
+        destination: new aws_logs.LogGroup(this, "stateMachineLogGroup", {
+          logGroupName: "stateMachineLogGroup",
+          retention: aws_logs.RetentionDays.FIVE_DAYS,
+        }),
+        level: sfn.LogLevel.ALL,
+      },
     });
     this.stateMachine = stateMachine;
   }
