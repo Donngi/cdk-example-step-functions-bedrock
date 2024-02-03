@@ -1,0 +1,681 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SnapShot 1`] = `
+{
+  "Mappings": {
+    "ServiceprincipalMap": {
+      "af-south-1": {
+        "states": "states.af-south-1.amazonaws.com",
+      },
+      "ap-east-1": {
+        "states": "states.ap-east-1.amazonaws.com",
+      },
+      "ap-northeast-1": {
+        "states": "states.ap-northeast-1.amazonaws.com",
+      },
+      "ap-northeast-2": {
+        "states": "states.ap-northeast-2.amazonaws.com",
+      },
+      "ap-northeast-3": {
+        "states": "states.ap-northeast-3.amazonaws.com",
+      },
+      "ap-south-1": {
+        "states": "states.ap-south-1.amazonaws.com",
+      },
+      "ap-south-2": {
+        "states": "states.ap-south-2.amazonaws.com",
+      },
+      "ap-southeast-1": {
+        "states": "states.ap-southeast-1.amazonaws.com",
+      },
+      "ap-southeast-2": {
+        "states": "states.ap-southeast-2.amazonaws.com",
+      },
+      "ap-southeast-3": {
+        "states": "states.ap-southeast-3.amazonaws.com",
+      },
+      "ap-southeast-4": {
+        "states": "states.ap-southeast-4.amazonaws.com",
+      },
+      "ca-central-1": {
+        "states": "states.ca-central-1.amazonaws.com",
+      },
+      "cn-north-1": {
+        "states": "states.cn-north-1.amazonaws.com",
+      },
+      "cn-northwest-1": {
+        "states": "states.cn-northwest-1.amazonaws.com",
+      },
+      "eu-central-1": {
+        "states": "states.eu-central-1.amazonaws.com",
+      },
+      "eu-central-2": {
+        "states": "states.eu-central-2.amazonaws.com",
+      },
+      "eu-north-1": {
+        "states": "states.eu-north-1.amazonaws.com",
+      },
+      "eu-south-1": {
+        "states": "states.eu-south-1.amazonaws.com",
+      },
+      "eu-south-2": {
+        "states": "states.eu-south-2.amazonaws.com",
+      },
+      "eu-west-1": {
+        "states": "states.eu-west-1.amazonaws.com",
+      },
+      "eu-west-2": {
+        "states": "states.eu-west-2.amazonaws.com",
+      },
+      "eu-west-3": {
+        "states": "states.eu-west-3.amazonaws.com",
+      },
+      "il-central-1": {
+        "states": "states.il-central-1.amazonaws.com",
+      },
+      "me-central-1": {
+        "states": "states.me-central-1.amazonaws.com",
+      },
+      "me-south-1": {
+        "states": "states.me-south-1.amazonaws.com",
+      },
+      "sa-east-1": {
+        "states": "states.sa-east-1.amazonaws.com",
+      },
+      "us-east-1": {
+        "states": "states.us-east-1.amazonaws.com",
+      },
+      "us-east-2": {
+        "states": "states.us-east-2.amazonaws.com",
+      },
+      "us-gov-east-1": {
+        "states": "states.us-gov-east-1.amazonaws.com",
+      },
+      "us-gov-west-1": {
+        "states": "states.us-gov-west-1.amazonaws.com",
+      },
+      "us-iso-east-1": {
+        "states": "states.amazonaws.com",
+      },
+      "us-iso-west-1": {
+        "states": "states.amazonaws.com",
+      },
+      "us-isob-east-1": {
+        "states": "states.amazonaws.com",
+      },
+      "us-west-1": {
+        "states": "states.us-west-1.amazonaws.com",
+      },
+      "us-west-2": {
+        "states": "states.us-west-2.amazonaws.com",
+      },
+    },
+  },
+  "Outputs": {
+    "ApiGatewayConstructRestApiEndpointB786B18F": {
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            {
+              "Ref": "ApiGatewayConstructRestApi5BCF74CD",
+            },
+            ".execute-api.",
+            {
+              "Ref": "AWS::Region",
+            },
+            ".",
+            {
+              "Ref": "AWS::URLSuffix",
+            },
+            "/",
+            {
+              "Ref": "ApiGatewayConstructRestApiDeploymentStageprod15911FDB",
+            },
+            "/",
+          ],
+        ],
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "ApiGatewayConstructRestApi5BCF74CD": {
+      "Properties": {
+        "Name": "step-functions-bedrock-exmample",
+      },
+      "Type": "AWS::ApiGateway::RestApi",
+    },
+    "ApiGatewayConstructRestApiAccount7C618E08": {
+      "DeletionPolicy": "Retain",
+      "DependsOn": [
+        "ApiGatewayConstructRestApi5BCF74CD",
+      ],
+      "Properties": {
+        "CloudWatchRoleArn": {
+          "Fn::GetAtt": [
+            "ApiGatewayConstructRestApiCloudWatchRole6F277622",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::ApiGateway::Account",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "ApiGatewayConstructRestApiApiKey69F04C6C": {
+      "Properties": {
+        "Enabled": true,
+        "StageKeys": [
+          {
+            "RestApiId": {
+              "Ref": "ApiGatewayConstructRestApi5BCF74CD",
+            },
+            "StageName": {
+              "Ref": "ApiGatewayConstructRestApiDeploymentStageprod15911FDB",
+            },
+          },
+        ],
+      },
+      "Type": "AWS::ApiGateway::ApiKey",
+    },
+    "ApiGatewayConstructRestApiCloudWatchRole6F277622": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "apigateway.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "ApiGatewayConstructRestApiDeploymentD0BFA00F56448a3517d093834f77fdf2cbce2a5b": {
+      "DependsOn": [
+        "ApiGatewayConstructRestApisummarizePOST87C251E8",
+        "ApiGatewayConstructRestApisummarizeA818102D",
+      ],
+      "Properties": {
+        "Description": "Automatically created by the RestApi construct",
+        "RestApiId": {
+          "Ref": "ApiGatewayConstructRestApi5BCF74CD",
+        },
+      },
+      "Type": "AWS::ApiGateway::Deployment",
+    },
+    "ApiGatewayConstructRestApiDeploymentStageprod15911FDB": {
+      "DependsOn": [
+        "ApiGatewayConstructRestApiAccount7C618E08",
+      ],
+      "Properties": {
+        "DeploymentId": {
+          "Ref": "ApiGatewayConstructRestApiDeploymentD0BFA00F56448a3517d093834f77fdf2cbce2a5b",
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayConstructRestApi5BCF74CD",
+        },
+        "StageName": "prod",
+      },
+      "Type": "AWS::ApiGateway::Stage",
+    },
+    "ApiGatewayConstructRestApiUsagePlanA38B8389": {
+      "Properties": {
+        "ApiStages": [
+          {
+            "ApiId": {
+              "Ref": "ApiGatewayConstructRestApi5BCF74CD",
+            },
+            "Stage": {
+              "Ref": "ApiGatewayConstructRestApiDeploymentStageprod15911FDB",
+            },
+            "Throttle": {},
+          },
+        ],
+      },
+      "Type": "AWS::ApiGateway::UsagePlan",
+    },
+    "ApiGatewayConstructRestApiUsagePlanUsagePlanKeyResourceMyTestStackApiGatewayConstructRestApiApiKey6624DE03A30CDA15": {
+      "Properties": {
+        "KeyId": {
+          "Ref": "ApiGatewayConstructRestApiApiKey69F04C6C",
+        },
+        "KeyType": "API_KEY",
+        "UsagePlanId": {
+          "Ref": "ApiGatewayConstructRestApiUsagePlanA38B8389",
+        },
+      },
+      "Type": "AWS::ApiGateway::UsagePlanKey",
+    },
+    "ApiGatewayConstructRestApisummarizeA818102D": {
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "ApiGatewayConstructRestApi5BCF74CD",
+            "RootResourceId",
+          ],
+        },
+        "PathPart": "summarize",
+        "RestApiId": {
+          "Ref": "ApiGatewayConstructRestApi5BCF74CD",
+        },
+      },
+      "Type": "AWS::ApiGateway::Resource",
+    },
+    "ApiGatewayConstructRestApisummarizePOST87C251E8": {
+      "Properties": {
+        "ApiKeyRequired": true,
+        "AuthorizationType": "NONE",
+        "HttpMethod": "POST",
+        "Integration": {
+          "Credentials": {
+            "Fn::GetAtt": [
+              "ApiGatewayConstructRestApisummarizePOSTStartSyncExecutionRoleF90180BF",
+              "Arn",
+            ],
+          },
+          "IntegrationHttpMethod": "POST",
+          "IntegrationResponses": [
+            {
+              "ResponseTemplates": {
+                "application/json": "#set($inputRoot = $input.path('$'))
+#if($input.path('$.status').toString().equals("FAILED"))
+#set($context.responseOverride.status = 500)
+{
+"error": "$input.path('$.error')",
+"cause": "$input.path('$.cause')"
+}
+#else
+$input.path('$.output')
+#end",
+              },
+              "StatusCode": "200",
+            },
+            {
+              "ResponseTemplates": {
+                "application/json": "{
+            "error": "Bad request!"
+          }",
+              },
+              "SelectionPattern": "4\\d{2}",
+              "StatusCode": "400",
+            },
+            {
+              "ResponseTemplates": {
+                "application/json": ""error": $input.path('$.error')",
+              },
+              "SelectionPattern": "5\\d{2}",
+              "StatusCode": "500",
+            },
+          ],
+          "PassthroughBehavior": "NEVER",
+          "RequestTemplates": {
+            "application/json": {
+              "Fn::Join": [
+                "",
+                [
+                  "## Velocity Template used for API Gateway request mapping template
+##
+## This template forwards the request body, header, path, and querystring
+## to the execution input of the state machine.
+##
+## "@@" is used here as a placeholder for '"' to avoid using escape characters.
+
+#set($inputString = '')
+#set($includeHeaders = false)
+#set($includeQueryString = true)
+#set($includePath = true)
+#set($includeAuthorizer = false)
+#set($allParams = $input.params())
+{
+    "stateMachineArn": "",
+                  {
+                    "Ref": "Workflow5F33CD7B",
+                  },
+                  "",
+
+    #set($inputString = "$inputString,@@body@@: $input.body")
+
+    #if ($includeHeaders)
+        #set($inputString = "$inputString, @@header@@:{")
+        #foreach($paramName in $allParams.header.keySet())
+            #set($inputString = "$inputString @@$paramName@@: @@$util.escapeJavaScript($allParams.header.get($paramName))@@")
+            #if($foreach.hasNext)
+                #set($inputString = "$inputString,")
+            #end
+        #end
+        #set($inputString = "$inputString }")
+        
+    #end
+
+    #if ($includeQueryString)
+        #set($inputString = "$inputString, @@querystring@@:{")
+        #foreach($paramName in $allParams.querystring.keySet())
+            #set($inputString = "$inputString @@$paramName@@: @@$util.escapeJavaScript($allParams.querystring.get($paramName))@@")
+            #if($foreach.hasNext)
+                #set($inputString = "$inputString,")
+            #end
+        #end
+        #set($inputString = "$inputString }")
+    #end
+
+    #if ($includePath)
+        #set($inputString = "$inputString, @@path@@:{")
+        #foreach($paramName in $allParams.path.keySet())
+            #set($inputString = "$inputString @@$paramName@@: @@$util.escapeJavaScript($allParams.path.get($paramName))@@")
+            #if($foreach.hasNext)
+                #set($inputString = "$inputString,")
+            #end
+        #end
+        #set($inputString = "$inputString }")
+    #end
+    
+    #if ($includeAuthorizer)
+        #set($inputString = "$inputString, @@authorizer@@:{")
+        #foreach($paramName in $context.authorizer.keySet())
+            #set($inputString = "$inputString @@$paramName@@: @@$util.escapeJavaScript($context.authorizer.get($paramName))@@")
+            #if($foreach.hasNext)
+                #set($inputString = "$inputString,")
+            #end
+        #end
+        #set($inputString = "$inputString }")
+    #end
+
+    #set($requestContext = "")
+    ## Check if the request context should be included as part of the execution input
+    #if($requestContext && !$requestContext.empty)
+        #set($inputString = "$inputString,")
+        #set($inputString = "$inputString @@requestContext@@: $requestContext")
+    #end
+
+    #set($inputString = "$inputString}")
+    #set($inputString = $inputString.replaceAll("@@",'"'))
+    #set($len = $inputString.length() - 1)
+    "input": "{$util.escapeJavaScript($inputString.substring(1,$len)).replaceAll("\\\\'","'")}"
+}
+",
+                ],
+              ],
+            },
+          },
+          "Type": "AWS",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region",
+                },
+                ":states:action/StartSyncExecution",
+              ],
+            ],
+          },
+        },
+        "MethodResponses": [
+          {
+            "ResponseModels": {
+              "application/json": "Empty",
+            },
+            "StatusCode": "200",
+          },
+          {
+            "ResponseModels": {
+              "application/json": "Error",
+            },
+            "StatusCode": "400",
+          },
+          {
+            "ResponseModels": {
+              "application/json": "Error",
+            },
+            "StatusCode": "500",
+          },
+        ],
+        "ResourceId": {
+          "Ref": "ApiGatewayConstructRestApisummarizeA818102D",
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayConstructRestApi5BCF74CD",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "ApiGatewayConstructRestApisummarizePOSTStartSyncExecutionRoleDefaultPolicy5328B63A": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "states:StartSyncExecution",
+              "Effect": "Allow",
+              "Resource": {
+                "Ref": "Workflow5F33CD7B",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "ApiGatewayConstructRestApisummarizePOSTStartSyncExecutionRoleDefaultPolicy5328B63A",
+        "Roles": [
+          {
+            "Ref": "ApiGatewayConstructRestApisummarizePOSTStartSyncExecutionRoleF90180BF",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "ApiGatewayConstructRestApisummarizePOSTStartSyncExecutionRoleF90180BF": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "apigateway.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "Workflow5F33CD7B": {
+      "DeletionPolicy": "Delete",
+      "DependsOn": [
+        "WorkflowRoleDefaultPolicy50B53903",
+        "WorkflowRole32C1368F",
+      ],
+      "Properties": {
+        "DefinitionString": {
+          "Fn::Join": [
+            "",
+            [
+              "{"StartAt":"BedrockTask","States":{"BedrockTask":{"End":true,"Type":"Task","OutputPath":"$.Body.completion","Resource":"arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":states:::bedrock:invokeModel","Parameters":{"ModelId":"arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":bedrock:",
+              {
+                "Ref": "AWS::Region",
+              },
+              "::foundation-model/anthropic.claude-v2:1","Body":{"prompt.$":"States.Format('\\n\\nHuman: 以下の文章から、要約を作成してください。\\n# 条件\\n- 要約は最大300文字程度としてください。\\n- 要約では、原文の主要な論点を網羅し、偏見のない表現を用いてください。\\n- 要約は日本語で作成してください。\\n- 作成した要約文のみを返却してください。「はい」「要約すると」などは不要です。\\n\\n# 要約対象の文章\\n{}\\n\\n# 要約文の例\\nこの記事は「Claudeのプロンプトエンジニアリング」について解説しています。\\n適切なプロンプトを用いることで、より目的に沿った応答を得ることができます。\\nこの記事では3つのプロンプトエンジニアリングの手法を解説しています。\\n1つ目の手法は、「Chain of Thought」です。この方法では段階的な思考を促すことで精度を高めます。\\n2つ目の手法は、「Generate Knowledge Prompting」です。この方法ではプロンプト内に回答生成に利用する情報を埋め込みます。\\n3つ目の手法は、「Self-Consistency」です。この方法では連想的な思考プロンプトを大量に含めることで、精度の向上を狙います。\\n\\nAssistant:', $.body.content)","max_tokens_to_sample":4000}}}}}",
+            ],
+          ],
+        },
+        "LoggingConfiguration": {
+          "Destinations": [
+            {
+              "CloudWatchLogsLogGroup": {
+                "LogGroupArn": {
+                  "Fn::GetAtt": [
+                    "WorkflowstateMachineLogGroup56FCCACC",
+                    "Arn",
+                  ],
+                },
+              },
+            },
+          ],
+          "Level": "ERROR",
+        },
+        "RoleArn": {
+          "Fn::GetAtt": [
+            "WorkflowRole32C1368F",
+            "Arn",
+          ],
+        },
+        "StateMachineType": "EXPRESS",
+      },
+      "Type": "AWS::StepFunctions::StateMachine",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "WorkflowRole32C1368F": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": {
+                  "Fn::FindInMap": [
+                    "ServiceprincipalMap",
+                    {
+                      "Ref": "AWS::Region",
+                    },
+                    "states",
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "WorkflowRoleDefaultPolicy50B53903": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "logs:CreateLogDelivery",
+                "logs:GetLogDelivery",
+                "logs:UpdateLogDelivery",
+                "logs:DeleteLogDelivery",
+                "logs:ListLogDeliveries",
+                "logs:PutResourcePolicy",
+                "logs:DescribeResourcePolicies",
+                "logs:DescribeLogGroups",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            {
+              "Action": "bedrock:InvokeModel",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":bedrock:",
+                    {
+                      "Ref": "AWS::Region",
+                    },
+                    "::foundation-model/anthropic.claude-v2:1",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "WorkflowRoleDefaultPolicy50B53903",
+        "Roles": [
+          {
+            "Ref": "WorkflowRole32C1368F",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "WorkflowstateMachineLogGroup56FCCACC": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "LogGroupName": "stateMachineLogGroup",
+        "RetentionInDays": 5,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Retain",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
